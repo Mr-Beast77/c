@@ -4,10 +4,10 @@ task:
     # The build machine:
     container:
         image: ubuntu:20.04
-          #cpu: 16
-          #memory: 24G
-          #        cpu: 16
-          #memory: 24G
+        #cpu: 16
+        #memory: 24G
+        cpu: 4
+        memory: 8G
 
     # No environment variables provided.
 
