@@ -37,7 +37,6 @@ depended_task:
     cpu: 0.2
     memory: 200M
   depends_on:
-    - source
     - source t
     - acheck
   depends_script: echo good boy
