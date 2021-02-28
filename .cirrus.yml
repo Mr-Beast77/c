@@ -10,7 +10,7 @@ check_task:
   name: ccache check
   container:
     image: node:latest
-    cpu: 0.5
+    cpu: 0.1
     memory: 200M
   node_modules_cache:
     folder: sb/node_modules
