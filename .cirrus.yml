@@ -3,11 +3,6 @@
 env:                            #env to pass to all tasks
   CIRRUS_CLONE_DEPTH: 1         #clone with depth=1 in all tasks
 
-base_template:
-  container: ubuntu:20.04
-    cpu: 0.2
-    memory: 200M
-
 source_task:                    #name task to use as dependencis
     name: source t              #source t shows in task/checklist in github
     container:                  #docker container
@@ -37,6 +32,10 @@ check_task:
 
 depended_task:
   name: depended task
+  container:
+    image: ubuntu:20.04
+    cpu: 0.2
+    memory: 200M
   depends_on:
     - source
     - source t
