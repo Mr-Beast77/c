@@ -1,16 +1,8 @@
 task:
-    # Basic metadata:
-    name: t2
-    # The build machine:
+    name: Source t
     container:
         image: ubuntu:20.04
         #cpu: 16
         #memory: 24G
-        #cpu: 16
-        #memory: 24G
-
-    # No environment variables provided.
-
-    # Instructions:
     t_script: source t
 
