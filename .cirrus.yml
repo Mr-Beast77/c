@@ -12,5 +12,5 @@ task:
     # No environment variables provided.
 
     # Instructions:
-    run_script: source t
+    t_script: source t
 
