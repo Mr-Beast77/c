@@ -1,14 +1,17 @@
+env:
+  CIRRUS_CLONE_DEPTH: 1
 source_task:
     name: source t              #source t shows in task/checklist in github
     container:                  #docker container
         image: ubuntu:20.04     #image:tag
         cpu: 0.2                #min=0.2,max=16
         memory: 200M            #min=your need, max=24G
+    silent_background_script:
+      - echo running in background && sleep 2
+    bground_script: sleep 3 &
+    fground_script: sleep 5
     t_script: source t          #t=Run t inside source t
     printenv_script: printenv
-    start_emulator_background_script:
-      - sleep 30s
-      - echo sleep working 
 
 check_task:
   name: ccache check
