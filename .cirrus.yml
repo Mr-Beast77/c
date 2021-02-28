@@ -10,8 +10,8 @@ check_task:
   name: ccache check
   container:
     image: node:latest
-    cpu: 1
-    memory: 200M
+    cpu: 0.5
+    memory: 20M
   node_modules_cache:
     folder: sb/node_modules
     fingerprint_script: cat sb/commands.txt 
