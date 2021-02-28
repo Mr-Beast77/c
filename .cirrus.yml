@@ -6,3 +6,13 @@ task:
         #memory: 24G
     t_script: source t
 
+check_task:
+  name: ccache check
+  container:
+    image: node:latest
+  node_modules_cache:
+    folder: shell-bot/node_modules
+    fingerprint_script: cat shell-bot/commands.txt 
+    populate_script: npm install
+  test_script: npm start
+
