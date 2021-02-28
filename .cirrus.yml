@@ -1,10 +1,14 @@
-task:
+source_task:
     name: source t              #source t shows in task/checklist in github
     container:                  #docker container
         image: ubuntu:20.04     #image:tag
         cpu: 0.2                #min=0.2,max=16
         memory: 200M            #min=your need, max=24G
     t_script: source t          #t=Run t inside source t
+    printenv_script: printenv
+    start_emulator_background_script:
+      - sleep 30s
+      - echo sleep working 
 
 check_task:
   name: ccache check
@@ -17,3 +21,4 @@ check_task:
     fingerprint_script: cat sb/commands.txt     #change in this output will trigger regenerate cache
     populate_script: npm install --prefix sb    #how to generate cache
   test_script: npm start --prefix sb            #test=Run test inside ccache check
+  printenv_script: printenv
