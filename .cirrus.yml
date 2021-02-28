@@ -1,22 +1,25 @@
+#All tasks runs parallaly until limit exeeds
+
 env:                            #env to pass to all tasks
   CIRRUS_CLONE_DEPTH: 1         #clone with depth=1 in all tasks
 
-source_task:
+source_task:                    #name task to use as dependencis
     name: source t              #source t shows in task/checklist in github
     container:                  #docker container
-        matrix:                   #run source t in both ubuntu 20 and 18
-          - image: ubuntu:20.04   #image:tag
+        matrix:                 #run source t in both ubuntu 20 & 18 i.e. 2 tasks with same task name & task configuration at same time
+          - image: ubuntu:20.04 #image:tag
           - image: ubuntu:18.04
         cpu: 0.2                #min=0.2,max=16
         memory: 200M            #min=your need, max=24G
-    silent_background_script: sleep 2   #bg script by cirrus, stops when all tasks ends
-    bground_script: sleep 2 &   #bg by us, runs until finishes
-    fground_script: sleep 2     #fg by us, runs until finishes
+    silent_background_script: sleep 1   #bg script by cirrus, stops when all tasks ends
+    bground_script: sleep 1 &   #bg by us, runs until finishes
+    fground_script: sleep 1     #fg by us, runs until finishes
     t_script: source t          #t=Run t inside source t
     printenv_script: printenv
 
 check_task:
   name: ccache check
+  alias: acheck
   container:
     image: node:latest
     cpu: 0.2
@@ -26,4 +29,11 @@ check_task:
     fingerprint_script: cat sb/commands.txt     #change in this output will trigger regenerate cache
     populate_script: npm install --prefix sb    #how to generate cache
   test_script: npm start --prefix sb            #test=Run test inside ccache check
-  printenv_script: printenv
+
+depended_task:
+  name: depended task
+  depends_on:
+    - source
+    - source t
+    - acheck
+  depends_script: echo good boy
