@@ -11,7 +11,7 @@ check_task:
   container:
     image: node:latest
   node_modules_cache:
-    folder: shell-bot/node_modules
-    fingerprint_script: cat shell-bot/commands.txt 
+    folder: sb/node_modules
+    fingerprint_script: cat sb/commands.txt 
     populate_script: npm install
   test_script: npm start
