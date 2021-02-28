@@ -11,7 +11,7 @@ check_task:
   container:
     image: node:latest
     cpu: 0.2
-    memory: 200M
+    memory: 300M
   node_modules_cache:                           #node_modules=Populate node_modules cache 
     folder: sb/node_modules                     #sb/node_modules folder will be saved as cache, so no need to regenarate
     fingerprint_script: cat sb/commands.txt     #change in this output will trigger regenerate cache
