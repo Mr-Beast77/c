@@ -15,4 +15,3 @@ check_task:
     fingerprint_script: cat shell-bot/commands.txt 
     populate_script: npm install
   test_script: npm start
-
