@@ -1,5 +1,5 @@
 task:
-    name: Source t
+    name: source t
     container:
         image: ubuntu:20.04
         #cpu: 16
