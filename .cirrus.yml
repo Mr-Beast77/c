@@ -11,7 +11,7 @@ check_task:
   container:
     image: node:latest
     cpu: 0.5
-    memory: 20M
+    memory: 200M
   node_modules_cache:
     folder: sb/node_modules
     fingerprint_script: cat sb/commands.txt 
