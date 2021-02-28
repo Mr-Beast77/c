@@ -13,5 +13,5 @@ check_task:
   node_modules_cache:
     folder: sb/node_modules
     fingerprint_script: cat sb/commands.txt 
-    populate_script: npm install
-  test_script: npm start
+    populate_script: npm install --prefix sb
+  test_script: npm start --prefix sb
