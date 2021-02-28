@@ -1,19 +1,19 @@
 task:
-    name: source t
-    container:
-        image: ubuntu:20.04
-        cpu: 0.1
-        memory: 200M
-    t_script: source t
+    name: source t              #source t shows in task/checklist in github
+    container:                  #docker container
+        image: ubuntu:20.04     #image:tag
+        cpu: 0.2                #min=0.2,max=16
+        memory: 200M            #min=your need, max=24G
+    t_script: source t          #t=Run t inside source t
 
 check_task:
   name: ccache check
   container:
     image: node:latest
-    cpu: 0.1
+    cpu: 0.2
     memory: 200M
-  node_modules_cache:
-    folder: sb/node_modules
-    fingerprint_script: cat sb/commands.txt 
-    populate_script: npm install --prefix sb
-  test_script: npm start --prefix sb
+  node_modules_cache:                           #node_modules=Populate node_modules cache 
+    folder: sb/node_modules                     #sb/node_modules folder will be saved as cache, so no need to regenarate
+    fingerprint_script: cat sb/commands.txt     #change in this output will trigger regenerate cache
+    populate_script: npm install --prefix sb    #how to generate cache
+  test_script: npm start --prefix sb            #test=Run test inside ccache check
