@@ -3,7 +3,14 @@
 env:                            #env to pass to all tasks
   CIRRUS_CLONE_DEPTH: 1         #clone with depth=1 in all tasks
 
-source_task:                    #name task to use as dependencis
+global_task_template: &GLOBAL_TASK_TEMPLATE
+  timeout_in: 120m
+  container:
+    image: ubuntu:20.04
+    cpu: 0.2
+    memory: 200M
+
+source_task:                    #no need of using 'source' here, only task would be enough                    
     name: source t              #source t shows in task/checklist in github
     container:                  #docker container
         matrix:                 #run source t in both ubuntu 20 & 18 i.e. 2 tasks with same task name & task configuration at same time
@@ -18,8 +25,8 @@ source_task:                    #name task to use as dependencis
     printenv_script: printenv
 
 check_task:
-  name: ccache check
-  alias: acheck
+  name: ccache check            #name of task, can call in depends_on
+  alias: acheck                 #alias of task name, can call in depends_on
   container:
     image: node:latest
     cpu: 0.2
@@ -32,11 +39,8 @@ check_task:
 
 depended_task:
   name: depended task
-  container:
-    image: ubuntu:20.04
-    cpu: 0.2
-    memory: 200M
-  depends_on:
-    - source t
-    - acheck
+  << : *GLOBAL_TASK_TEMPLATE
+  depends_on:                                   #only run after this tasks
+    - source t                                  #name of task 
+    - acheck                                    #alias of task
   depends_script: echo good boy
