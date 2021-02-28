@@ -13,11 +13,11 @@ global_task_template: &GLOBAL_TASK_TEMPLATE
 source_task:                    #no need of using 'source' here, only task would be enough                    
     name: source t              #source t shows in task/checklist in github
     container:                  #docker container
-        matrix:                 #run source t in both ubuntu 20 & 18 i.e. 2 tasks with same task name & task configuration at same time
-          - image: ubuntu:20.04 #image:tag
-          - image: ubuntu:18.04
-        cpu: 0.2                #min=0.2,max=16
-        memory: 200M            #min=your need, max=24G
+      matrix:                 #run source t in both ubuntu 20 & 18 i.e. 2 tasks with same task name & task configuration at same time
+        - image: ubuntu:20.04 #image:tag
+        - image: ubuntu:18.04
+      cpu: 1                #min=0.2,max=16
+      memory: 512M            #min=your need, max=24G
     silent_background_script: sleep 1   #bg script by cirrus, stops when all tasks ends
     bground_script: sleep 1 &   #bg by us, runs until finishes
     fground_script: sleep 1     #fg by us, runs until finishes
@@ -29,8 +29,8 @@ check_task:
   alias: acheck                 #alias of task name, can call in depends_on
   container:
     image: node:latest
-    cpu: 0.5
-    memory: 500M
+    cpu: 1
+    memory: 512M
   node_modules_cache:                           #node_modules=Populate node_modules cache 
     folder: sb/node_modules                     #sb/node_modules folder will be saved as cache, so no need to regenarate
     fingerprint_script: cat sb/commands.txt     #change in this output will trigger regenerate cache
