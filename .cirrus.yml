@@ -47,3 +47,18 @@ depended_task:
     - source t                                  #name of task 
     - acheck                                    #alias of task
   depends_script: echo good boy
+  
+
+
+lint_task:
+  script: date && sleep 10
+
+test_task:
+  script: date && sleep 10
+
+publish_task:
+  depends_on:
+    - test
+    - lint
+  script: date && sleep 10
+
