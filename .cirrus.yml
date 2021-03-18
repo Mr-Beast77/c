@@ -12,6 +12,7 @@ global_task_template: &GLOBAL_TASK_TEMPLATE
 
 source_task:                    #no need of using 'source' here, only task would be enough                    
     name: source t              #source t shows in task/checklist in github
+    skip: true
     container:                  #docker container
       matrix:                 #run source t in both ubuntu 20 & 18 i.e. 2 tasks with same task name & task configuration at same time
         - image: ubuntu:20.04 #image:tag
@@ -40,6 +41,7 @@ check_task:
 
 depended_task:
   name: depended task
+  skip: true
   << : *GLOBAL_TASK_TEMPLATE
   depends_on:                                   #only run after this tasks
     - source t                                  #name of task 
