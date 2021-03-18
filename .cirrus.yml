@@ -27,6 +27,7 @@ source_task:                    #no need of using 'source' here, only task would
 check_task:
   name: ccache check            #name of task, can call in depends_on
   alias: acheck                 #alias of task name, can call in depends_on
+  skip: true
   container:
     image: node:latest
     cpu: 1
