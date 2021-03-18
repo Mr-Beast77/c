@@ -52,11 +52,23 @@ depended_task:
 
 lint_task:
   script: date && sleep 10
+  container:
+    image: node:latest
+    cpu: 1
+    memory: 512M
 
 test_task:
   script: date && sleep 10
+  container:
+    image: node:latest
+    cpu: 1
+    memory: 512M
 
 publish_task:
+  container:
+    image: node:latest
+    cpu: 1
+    memory: 512M
   depends_on:
     - test
     - lint
