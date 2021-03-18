@@ -58,7 +58,7 @@ lint_task:
     memory: 512M
 
 test_task:
-  script: date && sleep 10
+  script: cat /etc/os*
   container:
     image: node:latest
     cpu: 1
