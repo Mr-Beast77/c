@@ -3,7 +3,7 @@
 env:                            #env to pass to all tasks
   CIRRUS_CLONE_DEPTH: 1         #clone with depth=1 in all tasks
 
-    #timeout_in: 10m
+timeout_in: 10m
 contianer:
   image: ubuntu:20.04
   cpu: 0.5
@@ -55,5 +55,4 @@ depended_task:
   depends_script: echo good boy
   
 cc_task:
-  name: cc test
   script: echo ok
