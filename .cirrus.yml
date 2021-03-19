@@ -55,4 +55,5 @@ depended_task:
   depends_script: echo good boy
   
 task:
+  name: nonono
   script: echo ok
