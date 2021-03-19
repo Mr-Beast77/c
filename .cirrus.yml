@@ -55,5 +55,6 @@ depended_task:
   depends_script: echo good boy
   
 cc_task:
+  name: sad2
   image: ubuntu:20.04
   script: echo ok
