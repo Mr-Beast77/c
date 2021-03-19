@@ -54,5 +54,5 @@ depended_task:
     - acheck                                    #alias of task
   depends_script: echo good boy
   
-cc_task:
+task:
   script: echo ok
