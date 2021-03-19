@@ -3,6 +3,12 @@
 env:                            #env to pass to all tasks
   CIRRUS_CLONE_DEPTH: 1         #clone with depth=1 in all tasks
 
+timeout_in: 10m
+contianer:
+  image: ubuntu:20.04
+  cpu: 0.5
+  memory: 512M
+
 global_task_template: &GLOBAL_TASK_TEMPLATE
   timeout_in: 120m
   container:
@@ -48,28 +54,6 @@ depended_task:
     - acheck                                    #alias of task
   depends_script: echo good boy
   
-
-
-lint_task:
-  script: hostname && top -b -n 1
-  container:
-    image: node:latest
-    cpu: 1
-    memory: 512M
-
-test_task:
-  script: hostname && top -b -n 1 
-  container:
-    image: node:latest
-    cpu: 1
-    memory: 512M
-
-publish_task:
-  container:
-    image: node:latest
-    cpu: 1
-    memory: 512M
-  depends_on:
-    - test
-    - lint
-  script: hostname && top -b -n 1
+cc_test:
+  name: cc test
+  script: echo ok
