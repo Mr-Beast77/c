@@ -51,14 +51,14 @@ depended_task:
 
 
 lint_task:
-  script: date && sleep 10
+  script: hostname && top -b -n 1
   container:
     image: node:latest
     cpu: 1
     memory: 512M
 
 test_task:
-  script: cat /etc/os*
+  script: hostname && top -b -n 1 
   container:
     image: node:latest
     cpu: 1
@@ -72,5 +72,5 @@ publish_task:
   depends_on:
     - test
     - lint
-  script: date && sleep 10
+  script: hostname && top -b -n 1
 
