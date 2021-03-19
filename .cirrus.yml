@@ -52,7 +52,7 @@ task:
     folder:
       myfolder
   test_script:
-    - cat myfolder/hi.txt
+    - cat myfolder/hi.txt || echo no problem
     - mkdir -p myfolder
     - echo 1st >> hi.txt
     - echo inside mydfolder >> myfolder/myfolder.txt
