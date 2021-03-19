@@ -56,4 +56,4 @@ task:
     - mkdir -p myfolder
     - echo 1st >> hi.txt
     - echo inside mydfolder >> myfolder/myfolder.txt
-    - cat myfolder/hi.txt
+    - cat myfolder/myfolder.txt
