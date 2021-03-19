@@ -56,5 +56,6 @@ depended_task:
   
 cc_task:
   name: sad2
-  image: ubuntu:20.04
+  container:
+    image: ubuntu:20.04
   script: echo ok
