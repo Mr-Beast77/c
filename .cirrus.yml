@@ -12,7 +12,7 @@ global_task_template: &GLOBAL_TASK_TEMPLATE
 
 source_task:                    #no need of using 'source' here, only task would be enough                    
     name: source t              #source t shows in task/checklist in github
-    skip: true
+    skip: true                  #to skip in all condition
     container:                  #docker container
       matrix:                 #run source t in both ubuntu 20 & 18 i.e. 2 tasks with same task name & task configuration at same time
         - image: ubuntu:20.04 #image:tag
@@ -73,4 +73,3 @@ publish_task:
     - test
     - lint
   script: date && sleep 10
-
