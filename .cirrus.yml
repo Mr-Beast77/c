@@ -3,11 +3,11 @@
 env:                            #env to pass to all tasks
   CIRRUS_CLONE_DEPTH: 1         #clone with depth=1 in all tasks
 
-timeout_in: 10m
+timeout_in: 2h
 container:
   image: ubuntu:20.04
-  cpu: 0.2
-  memory: 512M
+  cpu: 1
+  memory: 1G
 
 source_task:                    #no need of using 'source' here, only task would be enough                    
     name: source t              #source t shows in task/checklist in github
@@ -52,8 +52,9 @@ task:
     folder:
       myfolder
   test_script:
-    - cat myfolder/hi.txt || echo no problem
-    - mkdir -p myfolder
-    - echo 1st >> hi.txt
-    - echo inside mydfolder >> myfolder/myfolder.txt
-    - cat myfolder/myfolder.txt
+    - apt update
+    - apt install -y tmate
+    - tmate -S /tmp/tmate.sock new-session -d               # Launch tmate in a headless mode
+    - tmate -S /tmp/tmate.sock wait tmate-ready             # Blocks until the SSH connection is established
+    - tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'    # Prints the SSH connection string 
+    - sleep 2h
