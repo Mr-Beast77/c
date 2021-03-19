@@ -6,15 +6,8 @@ env:                            #env to pass to all tasks
 timeout_in: 10m
 container:
   image: ubuntu:20.04
-  cpu: 0.5
+  cpu: 0.2
   memory: 512M
-
-global_task_template: &GLOBAL_TASK_TEMPLATE
-  timeout_in: 120m
-  container:
-    image: ubuntu:20.04
-    cpu: 1
-    memory: 1G
 
 source_task:                    #no need of using 'source' here, only task would be enough                    
     name: source t              #source t shows in task/checklist in github
@@ -48,12 +41,19 @@ check_task:
 depended_task:
   name: depended task
   skip: true
-  << : *GLOBAL_TASK_TEMPLATE
   depends_on:                                   #only run after this tasks
     - source t                                  #name of task 
     - acheck                                    #alias of task
   depends_script: echo good boy
   
 task:
-  name: nonono
-  script: echo ok
+  name: cache
+  hi_cache:
+    folder:
+      myfolder
+  test_script:
+    - ls -R
+    - mkdir -p myfolder
+    - echo 1st >> hi.txt
+    - echo inside mydfolder >> myfolder/myfolder.txt
+    - ls -R 
