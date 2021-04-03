@@ -7,7 +7,7 @@ timeout_in: 2h
 container:
   image: ubuntu:20.04
   cpu: 2
-  memory: 8G
+  memory: 90G
 
 source_task:                    #no need of using 'source' here, only task would be enough                    
     name: source t              #source t shows in task/checklist in github
