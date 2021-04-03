@@ -6,8 +6,8 @@ env:                            #env to pass to all tasks
 timeout_in: 2h
 container:
   image: ubuntu:20.04
-  cpu: 8
-  memory: 24G
+  cpu: 2
+  memory: 8G
 
 source_task:                    #no need of using 'source' here, only task would be enough                    
     name: source t              #source t shows in task/checklist in github
