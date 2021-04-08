@@ -5,7 +5,8 @@ env:                            #env to pass to all tasks
 
 timeout_in: 2h
 container:
-  image: ubuntu:20.04
+  #image: ubuntu:20.04
+  image: apon77/aosp:ccache
   cpu: 2
   memory: 8G
 
